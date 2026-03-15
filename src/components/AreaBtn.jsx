@@ -5,11 +5,18 @@ const AreaBtn = ({
   onClick,
   icon: Icon,
   variant = "primary",
+  size = "sm",
   type = "button",
 }) => {
   const baseStyles =
     "px-4 py-2 rounded-md font-medium inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 transition";
 
+
+    const sizeStyles = {
+    sm: "text-sm",
+    md: "text-md",
+    lg: "text-lg",
+  };
   const variantStyles = {
     primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
     secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500",
@@ -20,7 +27,7 @@ const AreaBtn = ({
     <button
       type={type}
       onClick={onClick}
-      className={`${baseStyles} ${variantStyles[variant]}`}
+      className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]}`}
     >
       {Icon && <Icon size={12} />}
       {label}

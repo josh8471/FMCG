@@ -9,7 +9,7 @@ export default {
           800: '#252945', // Sidebar lighter (hover)
         },
         light: {
-          bg: '#f8f9fa', // Main background
+          bg: '#f8f9d', // Main background
           card: '#ffffff',
         },
         brand: {
@@ -18,9 +18,13 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Matches the clean look
+        sans: ['Inter', 'sans-serif', "Roboto"],
+         // Matches the clean look
+
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
 }

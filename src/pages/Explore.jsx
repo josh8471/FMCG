@@ -1,14 +1,41 @@
-import React from 'react'
+import React from "react";
 
 const Explore = () => {
   return (
-    <div>
-<h1 className="text-2xl font-bold">
-   Explore Page
-</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab distinctio vitae dolore aliquid molestiae porro asperiores fuga quos facere ducimus, voluptatum magni sapiente quibusdam eveniet dignissimos numquam labore adipisci eligendi? Obcaecati beatae commodi necessitatibus ipsum ab sequi, cum, quae optio dolorum suscipit aliquid praesentium, consectetur quas atque quod porro incidunt?</p>
-    </div>
-  )
-}
+    <div className="max-w-4xl mx-auto p-6">
 
-export default Explore
+      <div className="card ">
+
+        <div className="card-header flex items-center justify-between">
+          <h1 className="text-xxl font-semibold">
+            Explore Page
+          </h1>
+
+         
+        </div>
+
+        <div className="card-body">
+
+          <p className="text-slate-600 leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ab distinctio vitae dolore aliquid molestiae porro asperiores
+            fuga quos facere ducimus, voluptatum magni sapiente quibusdam
+            eveniet dignissimos numquam labore adipisci eligendi.
+          </p>
+
+          <div className="mt-6 flex gap-3">
+            <button className="btn btn-primary">
+              Get Started
+            </button>
+
+           
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  );
+};
+
+export default Explore;

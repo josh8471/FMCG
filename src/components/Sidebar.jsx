@@ -1,10 +1,18 @@
 import React from "react";
 import {
-  FaRocket, FaStore, FaShoppingCart, FaBox, FaCog, FaBars, FaTimes,
-  FaChevronLeft, 
+  FaRocket,
+  FaStore,
+  FaShoppingCart,
+  FaBox,
+  FaCog,
+  FaBars,
+  FaTimes,
+  FaChevronLeft,
 } from "react-icons/fa";
+import { MdProductionQuantityLimits } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { BsChevronDown, BsChevronRight } from "react-icons/bs";
+import { FaMapLocationDot } from "react-icons/fa6";
 
 
 const SidebarItem = ({
@@ -14,18 +22,30 @@ const SidebarItem = ({
   hasSubmenu = false,
   isOpen = false,
   onClick,
-  isCollapsed, 
+  isCollapsed,
 }) => (
   <div
     onClick={onClick}
-    className={`px-6 py-3 cursor-pointer flex items-center transition-all duration-200
+    className={`
+      cursor-pointer flex items-center transition-all duration-200
+      px-6 py-3
       ${isCollapsed ? "justify-center px-0" : "justify-between"}
-      ${active ? "bg-navy-800 border-l-4 border-blue-500" : "hover:bg-white/5 border-l-4 border-transparent"}`}
+      ${
+        active
+          ? "bg-navy-800 border-l-4 border-blue-500"
+          : "hover:bg-white/5 border-l-4 border-transparent"
+      }
+    `}
   >
     <div className="flex items-center gap-3 text-gray-300">
       <Icon size={18} className="shrink-0" />
-      {!isCollapsed && <span className="text-sm font-medium whitespace-nowrap">{label}</span>}
+      {!isCollapsed && (
+        <span className="text-sm font-medium whitespace-nowrap">
+          {label}
+        </span>
+      )}
     </div>
+
     {!isCollapsed && hasSubmenu && (
       <div className="text-gray-400">
         {isOpen ? <BsChevronDown size={12} /> : <BsChevronRight size={12} />}
@@ -34,8 +54,9 @@ const SidebarItem = ({
   </div>
 );
 
+
 const SubMenuItem = ({ label, code, to, onItemClick, isCollapsed }) => {
-  if (isCollapsed) return null; 
+  if (isCollapsed) return null;
 
   const content = (
     <div className="pl-6 py-2 cursor-pointer hover:text-white text-gray-400 flex items-center gap-3 group">
@@ -46,55 +67,85 @@ const SubMenuItem = ({ label, code, to, onItemClick, isCollapsed }) => {
     </div>
   );
 
-  return to ? <Link to={to} onClick={onItemClick}>{content}</Link> : content;
+  return to ? (
+    <Link to={to} onClick={onItemClick}>
+      {content}
+    </Link>
+  ) : (
+    content
+  );
 };
 
-
-export default function Sidebar({ 
-  sidebarOpen, 
-  setSidebarOpen, 
-  isCollapsed, 
-  setIsCollapsed 
+ 
+export default function Sidebar({
+  sidebarOpen,
+  setSidebarOpen,
+  isCollapsed,
+  setIsCollapsed,
 }) {
-  const [salesOpen, setSalesOpen] = React.useState(false);
   const [exploreOpen, setExploreOpen] = React.useState(false);
+  const [warehouseOpen, setWarehouseOpen] = React.useState(false);
   const [purchasesOpen, setPurchasesOpen] = React.useState(false);
+  const [beatplanOpen, setBeatplanOpen] = React.useState(false);
 
   const handleLinkClick = () => {
-    setSidebarOpen(false);
+    setSidebarOpen(false); 
   };
 
   return (
     <>
-     
-
       {sidebarOpen && (
-        <div onClick={() => setSidebarOpen(false)} className="fixed inset-0 bg-black/50 z-20 lg:hidden" />
+        <div
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+        />
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-screen bg-navy-900 flex flex-col z-30 transform transition-all duration-300
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-        ${isCollapsed ? "lg:w-20" : "lg:w-64"}
-        lg:translate-x-0`}
+        className={`
+          fixed top-0 left-0 h-screen bg-navy-900 z-30 flex flex-col
+          transition-all duration-300 ease-in-out
+
+          w-64
+          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+
+          lg:translate-x-0
+          ${isCollapsed ? "lg:w-20" : "lg:w-64"}
+        `}
       >
-        <div className="h-16 flex items-center justify-between px-6 border-b border-gray-700/50 overflow-hidden">
-          <Link to="/Home" className="flex items-center gap-2 text-white font-bold min-w-max">
+        <div className="h-16 flex items-center justify-between px-6 border-b border-gray-700/50">
+          <Link
+            to="/Home"
+            className="flex items-center gap-2 text-white font-bold"
+          >
             <span className="text-green-500 text-xl">🎄</span>
             {!isCollapsed && <span>FMCG Org</span>}
           </Link>
-          <button className="lg:hidden text-gray-400" onClick={() => setSidebarOpen(false)}>
+
+          <button
+            className="lg:hidden text-gray-400"
+            onClick={() => setSidebarOpen(false)}
+          >
             <FaTimes />
           </button>
         </div>
 
-        <nav className="flex-1 py-5 overflow-y-auto overflow-x-hidden">
-          <button 
+        <nav className="flex-1 py-4 overflow-y-auto overflow-x-hidden">
+          <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden lg:flex w-full items-center justify-center py-3 text-gray-400 hover:text-white transition-colors"
+            className="hidden lg:flex w-full items-center justify-center py-3
+                       text-gray-400 hover:text-white transition-colors"
           >
-            {isCollapsed ? <FaBars /> : <div className="flex items-center gap-2 text-xs uppercase tracking-wider font-bold"><FaChevronLeft /> <span>Collapse</span></div>}
+            {isCollapsed ? (
+              <FaBars />
+            ) : (
+              <div className="flex items-center gap-2 text-xs uppercase font-bold">
+                <FaChevronLeft />
+                <span>Collapse</span>
+              </div>
+            )}
           </button>
+
           <SidebarItem
             icon={FaRocket}
             label="Getting Started"
@@ -103,31 +154,82 @@ export default function Sidebar({
             isCollapsed={isCollapsed}
             onClick={() => !isCollapsed && setExploreOpen(!exploreOpen)}
           />
-          
+
           {exploreOpen && !isCollapsed && (
             <div className="bg-[#151725] py-2">
-              <SubMenuItem code="EX" label="Explore" to="/Explore" onItemClick={handleLinkClick} isCollapsed={isCollapsed} />
-              <SubMenuItem code="GS" label="Onboarding" to="/Onboarding" onItemClick={handleLinkClick} isCollapsed={isCollapsed} />
+              <SubMenuItem
+                code="EX"
+                label="Explore"
+                to="/Explore"
+                onItemClick={handleLinkClick}
+                isCollapsed={isCollapsed}
+              />
+              <SubMenuItem
+                code="GS"
+                label="Onboarding"
+                to="/Onboarding"
+                onItemClick={handleLinkClick}
+                isCollapsed={isCollapsed}
+              />
             </div>
           )}
 
-          <Link to="/beat-planning" onClick={handleLinkClick}>
-            <SidebarItem icon={FaBox} label="Beat Planning" isCollapsed={isCollapsed} />
+            <SidebarItem
+              icon={FaMapLocationDot}
+              label="Beat Planning"
+              hasSubmenu={!isCollapsed}
+              isOpen={beatplanOpen}
+              isCollapsed={isCollapsed}
+              onClick={() => !isCollapsed && setBeatplanOpen(!beatplanOpen)}
+            />
+              {beatplanOpen && !isCollapsed && (
+                <div className="bg-[#151725] py-2">
+                  <SubMenuItem
+                    code="BP"
+                    label="Beat Management"
+                    to="/beat-planning"
+                    onItemClick={handleLinkClick}
+                  />
+
+                  <SubMenuItem
+                    code="SM"
+                    label="Salesman Management"
+                    to="/salesman-management"
+                    onItemClick={handleLinkClick}
+                  />
+                </div>
+              )}
+
+          <Link to="/Product" onClick={handleLinkClick}>
+            <SidebarItem
+              icon={MdProductionQuantityLimits}
+              label="Products"
+              isCollapsed={isCollapsed}
+            />
           </Link>
 
           <SidebarItem
             icon={FaStore}
-            label="Sales"
+            label="Warehouse"
             hasSubmenu={!isCollapsed}
-            isOpen={salesOpen}
+            isOpen={warehouseOpen}
             isCollapsed={isCollapsed}
-            onClick={() => !isCollapsed && setSalesOpen(!salesOpen)}
+            onClick={() => !isCollapsed && setWarehouseOpen(!warehouseOpen)}
           />
-          {salesOpen && !isCollapsed && (
-            <div className="bg-[#151725] py-2 ">
-              <SubMenuItem code="OR" label="Orders" isCollapsed={isCollapsed} />
-              <SubMenuItem code="IN" label="Invoices" isCollapsed={isCollapsed} />
-              <SubMenuItem code="PA" label="Payments" isCollapsed={isCollapsed} />
+
+          {warehouseOpen && !isCollapsed && (
+            <div className="bg-[#151725] py-2">
+              <SubMenuItem code="ST" label="Stock" isCollapsed={isCollapsed} />
+              <SubMenuItem
+                code="SE"
+                label="Stock Entries"
+                isCollapsed={isCollapsed}
+              />
+              <SubMenuItem
+                code="TR"
+                label="Stock Transfer"
+                isCollapsed={isCollapsed}
+              />
             </div>
           )}
 
@@ -139,22 +241,29 @@ export default function Sidebar({
             isCollapsed={isCollapsed}
             onClick={() => !isCollapsed && setPurchasesOpen(!purchasesOpen)}
           />
+
           {purchasesOpen && !isCollapsed && (
             <div className="bg-[#151725] py-2">
-              <SubMenuItem code="PO" label="Purchase Orders" isCollapsed={isCollapsed} />
+              <SubMenuItem
+                code="PO"
+                label="Purchase Orders"
+                isCollapsed={isCollapsed}
+              />
               <SubMenuItem code="BI" label="Bills" isCollapsed={isCollapsed} />
-              
             </div>
           )}
         </nav>
 
-        <div className="flex-1 py-5 overflow-y-auto overflow-x-hidden">
-          <SidebarItem icon={FaCog} label="Config" isCollapsed={isCollapsed} />
-          
-         
-
-         
+        {/* 
+        <div className="border-t border-gray-700/50 p-3">
+          <SidebarItem
+            icon={FaCog}
+            label="Config"
+            isCollapsed={isCollapsed}
+          />
         </div>
+        Footer */ }
+
       </aside>
     </>
   );
