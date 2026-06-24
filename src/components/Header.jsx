@@ -147,7 +147,6 @@ export default function Header({
 
                 <div className="border-t border-gray-100 my-1" />
 
-                {/* Account */}
                 <div className="py-2">
                   <p className="px-4 text-[10px] text-gray-400 uppercase font-bold mb-1">
                     My Account

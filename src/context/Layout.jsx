@@ -118,7 +118,6 @@ const Layout = () => {
           showSearch={showSearch}
         />
 
-        {/* POPUP on add salesman page */}
         {showAddModal && (
           <div className="modal-overlay">
             <div className="modal-box">
@@ -144,7 +143,6 @@ const Layout = () => {
           </div>
         )}
 
-        {/* PAGE CONTENT */}
         <main className="pt-20 px-6">
           <Outlet
             context={{

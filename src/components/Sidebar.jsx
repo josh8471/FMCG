@@ -254,16 +254,6 @@ export default function Sidebar({
           )}
         </nav>
 
-        {/* 
-        <div className="border-t border-gray-700/50 p-3">
-          <SidebarItem
-            icon={FaCog}
-            label="Config"
-            isCollapsed={isCollapsed}
-          />
-        </div>
-        Footer */ }
-
       </aside>
     </>
   );

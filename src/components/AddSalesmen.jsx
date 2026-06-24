@@ -58,7 +58,7 @@ const AddSalesman = ({ onAdd, onClose, initialData }) => {
     setForm(prev => ({
       ...prev,
       beatName: selectedBeat,
-      areaName: associatedArea // Auto-select area
+      areaName: associatedArea
     }));
   };
 
@@ -68,7 +68,7 @@ const AddSalesman = ({ onAdd, onClose, initialData }) => {
     setForm(prev => ({
       ...prev,
       areaName: selectedArea,
-      beatName: associatedBeat // Auto-select beat
+      beatName: associatedBeat
     }));
   };
 
@@ -122,7 +122,6 @@ const AddSalesman = ({ onAdd, onClose, initialData }) => {
       </div>
 
       <div className="modal-body">
-        {/* Left Col: Avatar */}
         <div className="avatar-section">
           <label className="avatar-wrapper">
              {form.photoPreview ? (
@@ -151,7 +150,6 @@ const AddSalesman = ({ onAdd, onClose, initialData }) => {
           <p className="upload-text">Allowed *.jpeg, *.jpg, *.png, *.gif</p>
         </div>
 
-        {/* Right Col: Form */}
         <div className="form-section">
             
             <div className="input-group">

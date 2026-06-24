@@ -1,26 +1,23 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         navy: {
-          900: '#1e2139', // Sidebar dark
-          800: '#252945', // Sidebar lighter (hover)
+          900: '#1e2139',
+          800: '#252945',
         },
         light: {
-          bg: '#f8f9d', // Main background
+          bg: '#f8f9d',
           card: '#ffffff',
         },
         brand: {
-          green: '#22c55e', // Growth green
-          red: '#ef4444',   // Loss red
+          green: '#22c55e',
+          red: '#ef4444',
         }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif', "Roboto"],
-         // Matches the clean look
-
       }
     },
   },

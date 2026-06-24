@@ -6,8 +6,7 @@ import { GiClick } from "react-icons/gi";
 
 
 const SalesmanManagement = () => {
-  //  FROM LAYOUT
-  const { 
+  const {
     salesmen, 
     setSalesmen, 
     setShowAddModal, 
@@ -24,13 +23,8 @@ const SalesmanManagement = () => {
     setShowAddModal(true);
   };
 
-  // As per comments:
-  // "In the active salesman when the Username is clicked it should autofill the details of the email and phone number in the edit salesman page" -> logic handles by passing salesman object
-  // "When the Sales area is clicked it should autofill beat name..." -> logic handles by passing salesman object (which contains these fields)
-  // Essentially, clicking these fields triggers the edit mode.
-
-  const activeSalesmen = salesmen.filter(s => s.status !== 'Retired' && s.status !== 'Inactive'); // Default to showing all as active if status undefined
-  const allSalesmen = salesmen; // Duplicate for now as per requirement
+  const activeSalesmen = salesmen.filter(s => s.status !== 'Retired' && s.status !== 'Inactive');
+  const allSalesmen = salesmen;
 
   const TableRow = ({ s, isAllTable = false }) => (
     <tr key={s.id} className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0">
@@ -136,7 +130,6 @@ const SalesmanManagement = () => {
 
   return (
     <div className="max-w-7xl mx-auto pb-20">
-      {/* Header Section */}
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
           <CiViewTable size={32} />
@@ -148,7 +141,6 @@ const SalesmanManagement = () => {
       </div>
 
       <div className="space-y-12">
-        {/* ACTIVE SALESMEN TABLE */}
         <section>
             <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <span className="w-2 h-8 bg-blue-600 rounded-full"></span>
@@ -184,7 +176,6 @@ const SalesmanManagement = () => {
             </div>
         </section>
 
-        {/* ALL SALESMEN TABLE */}
         <section>
             <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
                  <span className="w-2 h-8 bg-gray-600 rounded-full"></span>
